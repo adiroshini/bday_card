@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Card</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #98D8E8 50%, #ADD8E6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .clouds {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            opacity: 0.7;
+            animation: float 15s infinite linear;
+        }
+        
+        .cloud:before,
+        .cloud:after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+        }
+        
+        .cloud1 {
+            width: 80px;
+            height: 40px;
+            top: 20%;
+            left: -100px;
+            animation-duration: 20s;
+        }
+        
+        .cloud1:before {
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            left: 10px;
+        }
+        
+        .cloud1:after {
+            width: 60px;
+            height: 20px;
+            top: -10px;
+            right: 10px;
+        }
+        
+        .cloud2 {
+            width: 100px;
+            height: 50px;
+            top: 10%;
+            left: -120px;
+            animation-duration: 25s;
+            animation-delay: -5s;
+        }
+        
+        .cloud2:before {
+            width: 60px;
+            height: 60px;
+            top: -30px;
+            left: 15px;
+        }
+        
+        .cloud2:after {
+            width: 70px;
+            height: 25px;
+            top: -15px;
+            right: 15px;
+        }
+        
+        .cloud3 {
+            width: 120px;
+            height: 60px;
+            top: 30%;
+            left: -150px;
+            animation-duration: 30s;
+            animation-delay: -10s;
+        }
+        
+        .cloud3:before {
+            width: 70px;
+            height: 70px;
+            top: -35px;
+            left: 20px;
+        }
+        
+        .cloud3:after {
+            width: 80px;
+            height: 30px;
+            top: -20px;
+            right: 20px;
+        }
+        
+        .cloud4 {
+            width: 90px;
+            height: 45px;
+            top: 60%;
+            left: -110px;
+            animation-duration: 22s;
+            animation-delay: -15s;
+        }
+        
+        .cloud4:before {
+            width: 55px;
+            height: 55px;
+            top: -27px;
+            left: 12px;
+        }
+        
+        .cloud4:after {
+            width: 65px;
+            height: 22px;
+            top: -12px;
+            right: 12px;
+        }
+        
+        .cloud5 {
+            width: 110px;
+            height: 55px;
+            top: 70%;
+            left: -130px;
+            animation-duration: 28s;
+            animation-delay: -20s;
+        }
+        
+        .cloud5:before {
+            width: 65px;
+            height: 65px;
+            top: -32px;
+            left: 18px;
+        }
+        
+        .cloud5:after {
+            width: 75px;
+            height: 27px;
+            top: -17px;
+            right: 18px;
+        }
+        
+        .cloud6 {
+            width: 85px;
+            height: 42px;
+            top: 50%;
+            left: -105px;
+            animation-duration: 18s;
+            animation-delay: -8s;
+        }
+        
+        .cloud6:before {
+            width: 52px;
+            height: 52px;
+            top: -26px;
+            left: 11px;
+        }
+        
+        .cloud6:after {
+            width: 62px;
+            height: 21px;
+            top: -11px;
+            right: 11px;
+        }
+        
+        .cloud7 {
+            width: 95px;
+            height: 47px;
+            top: 5%;
+            left: -115px;
+            animation-duration: 24s;
+            animation-delay: -12s;
+        }
+        
+        .cloud7:before {
+            width: 57px;
+            height: 57px;
+            top: -28px;
+            left: 13px;
+        }
+        
+        .cloud7:after {
+            width: 67px;
+            height: 23px;
+            top: -13px;
+            right: 13px;
+        }
+        
+        .cloud8 {
+            width: 105px;
+            height: 52px;
+            top: 40%;
+            left: -125px;
+            animation-duration: 26s;
+            animation-delay: -18s;
+        }
+        
+        .cloud8:before {
+            width: 62px;
+            height: 62px;
+            top: -31px;
+            left: 16px;
+        }
+        
+        .cloud8:after {
+            width: 72px;
+            height: 26px;
+            top: -16px;
+            right: 16px;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateX(-100px);
+            }
+            100% {
+                transform: translateX(calc(100vw + 200px));
+            }
+        }
+        
+        .card-container {
+            background: linear-gradient(135deg, #F5E6D3 0%, #E8D5C4 100%);
+            border-radius: 20px;
+            width: 100%;
+            max-width: min(400px, 95vw);
+            padding: clamp(25px, 6vw, 40px) clamp(15px, 4vw, 30px) clamp(65px, 15vw, 80px) clamp(15px, 4vw, 30px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+            margin: 10px;
+        }
+        
+        .bunting {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+        
+        .flag {
+            width: 0;
+            height: 0;
+            border-left: clamp(15px, 4vw, 25px) solid transparent;
+            border-right: clamp(15px, 4vw, 25px) solid transparent;
+            border-top: clamp(25px, 6vw, 40px) solid;
+            margin-top: -5px;
+            flex-shrink: 0;
+        }
+        
+        .flag:nth-child(1) { border-top-color: #87CEEB; }
+        .flag:nth-child(2) { border-top-color: #FFB347; }
+        .flag:nth-child(3) { border-top-color: #DDA0DD; }
+        .flag:nth-child(4) { border-top-color: #98FB98; }
+        .flag:nth-child(5) { border-top-color: #FFB6C1; }
+        .flag:nth-child(6) { border-top-color: #F0E68C; }
+        
+        .birthday-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(28px, 8vw, 48px);
+            font-weight: 600;
+            color: #4A5568;
+            margin-top: clamp(25px, 6vw, 40px);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            line-height: 1.2;
+        }
+        
+        .wish-text {
+            font-size: clamp(14px, 3.5vw, 16px);
+            color: #666;
+            margin-bottom: 25px;
+            font-weight: 400;
+            line-height: 1.4;
+            padding: 0 10px;
+        }
+        
+        .cake-container {
+            position: relative;
+            margin: 30px 0 40px 0;
+            display: inline-block;
+        }
+        
+        .cake-image {
+            width: clamp(100px, 35vw, 180px);
+            height: clamp(100px, 35vw, 180px);
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            max-width: 100%;
+        }
+        
+        .grass {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: clamp(40px, 10vw, 60px);
+            background: linear-gradient(135deg, #90EE90 0%, #32CD32 100%);
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .grass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path d="M0,20 Q10,5 20,15 T40,10 T60,15 T80,10 T100,15 V20 Z" fill="%2390EE90"/></svg>');
+            background-size: 100px 20px;
+            background-repeat: repeat-x;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .footer-icon {
+            width: clamp(35px, 8vw, 45px);
+            height: clamp(35px, 8vw, 45px);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-size: clamp(18px, 4vw, 24px);
+            touch-action: manipulation;
+        }
+        
+        .gift-box {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF5252 100%);
+        }
+        
+        .gift-box::before {
+            content: '🎁';
+            font-size: clamp(16px, 4vw, 20px);
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+        }
+        
+        .footer-icon:hover,
+        .footer-icon:active {
+            transform: scale(1.15);
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            padding: 10px;
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: clamp(20px, 5vw, 40px);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            max-width: min(400px, 95vw);
+            max-height: 90vh;
+            width: 100%;
+            text-align: center;
+            animation: modalSlideIn 0.3s ease-out;
+            overflow-y: auto;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+        
+        .modal-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(24px, 6vw, 32px);
+            color: #FF6B6B;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .modal-subtitle {
+            font-size: clamp(14px, 3.5vw, 16px);
+            color: #FF6B6B;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .modal-subtitle::before {
+            content: '🎁';
+            margin-right: 8px;
+        }
+        
+        .modal-message {
+            background: #F8F9FA;
+            padding: clamp(15px, 4vw, 20px);
+            border-radius: 10px;
+            font-size: clamp(12px, 3vw, 14px);
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: clamp(20px, 5vw, 24px);
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            touch-action: manipulation;
+            padding: 5px;
+        }
+        
+        .close-button:hover,
+        .close-button:active {
+            color: #FF6B6B;
+        }
+        
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .confetti-piece {
+            position: absolute;
+            width: clamp(6px, 1.5vw, 8px);
+            height: clamp(6px, 1.5vw, 8px);
+            background: #FF6B6B;
+            border-radius: 50%;
+        }
+        
+        .confetti-piece:nth-child(2n) { background: #FFD700; }
+        .confetti-piece:nth-child(3n) { background: #98FB98; }
+        .confetti-piece:nth-child(4n) { background: #87CEEB; }
+        .confetti-piece:nth-child(5n) { background: #DDA0DD; }
+        .confetti-piece:nth-child(6n) { background: #FFB6C1; }
+        .confetti-piece:nth-child(7n) { background: #F0E68C; }
+        .confetti-piece:nth-child(8n) { background: #FFA07A; }
+        
+        .confetti-top {
+            animation: confetti-fall-top 4s linear infinite;
+        }
+        
+        .confetti-left {
+            animation: confetti-fall-left 4s linear infinite;
+        }
+        
+        .confetti-right {
+            animation: confetti-fall-right 4s linear infinite;
+        }
+        
+        .confetti-bottom {
+            animation: confetti-fall-bottom 4s linear infinite;
+        }
+        
+        @keyframes confetti-fall-top {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes confetti-fall-left {
+            0% {
+                transform: translateX(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes confetti-fall-right {
+            0% {
+                transform: translateX(100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-100vw) rotate(-360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes confetti-fall-bottom {
+            0% {
+                transform: translateY(100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(-360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Additional improvements for very small screens */
+        @media (max-width: 320px) {
+            body {
+                padding: 5px;
+            }
+            
+            .bunting {
+                height: 40px;
+            }
+            
+            .flag:nth-child(n+5) {
+                display: none;
+            }
+        }
+
+        /* Landscape orientation on small screens */
+        @media (max-height: 600px) and (orientation: landscape) {
+            body {
+                align-items: flex-start;
+                padding: 5px;
+            }
+            
+            .card-container {
+                margin: 5px 0;
+            }
+            
+            .modal-content {
+                max-height: 95vh;
+                top: 50%;
+            }
+        }
+
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .cake-image {
+                image-rendering: -webkit-optimize-contrast;
+            }
+        }
+
+        /* Improve touch targets */
+        @media (hover: none) and (pointer: coarse) {
+            .footer-icon {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            .close-button {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clouds">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="cloud cloud4"></div>
+        <div class="cloud cloud5"></div>
+        <div class="cloud cloud6"></div>
+        <div class="cloud cloud7"></div>
+        <div class="cloud cloud8"></div>
+    </div>
+    
+    <div class="card-container">
+        <div class="bunting">
+            <div class="flag"></div>
+            <div class="flag"></div>
+            <div class="flag"></div>
+            <div class="flag"></div>
+            <div class="flag"></div>
+            <div class="flag"></div>
+        </div>
+        
+        <h1 class="birthday-title">Happy Birthday</h1>
+        <p class="wish-text">With all the love, may all your dreams come true!</p>
+        
+        <div class="cake-container">
+            <img src="c:\Users\V.S.PATEL\Downloads\hey.jpeg.jpeg" alt="Birthday Cake" class="cake-image">
+        </div>
+        
+        <div class="footer">
+            <div class="footer-icon gift-box" onclick="openModal()"></div>
+        </div>
+        
+        <div class="grass"></div>
+    </div>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeModal()">&times;</button>
+            <h2 class="modal-title">Your Present</h2>
+            <p class="modal-subtitle">My little Lilly!</p>
+            <div class="modal-message">
+                May this special day bring you joy, laughter, and beautiful memories. Can you believe you're actually 18 right now! It feels like just yesterday you were this small child who never wanted to leave my side. You are one of the most beautiful people I've ever known, both inside and out. I understand this year has been challenging for you, but you truly deserve everything the world has to offer. I have faith that you will accomplish your goals, and remember, I'll always be here for you, so lean on me whenever you need to. I apologize if I've ever hurt you; siblings do argue, right? It feels like my little sister has finally matured, pursuing her dreams and embracing herself. Thank you for being the little sister I never had. With all my love, your big sis❤️!!
+            </div>
+        </div>
+    </div>
+    
+    <div id="confetti" class="confetti"></div>
+    
+    <script>
+        function openModal() {
+            document.getElementById('modal').style.display = 'block';
+            createConfetti();
+        }
+        
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+        
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            confettiContainer.innerHTML = '';
+            
+            const sides = ['top', 'left', 'right', 'bottom'];
+            const confettiCount = window.innerWidth < 768 ? 10 : 15;
+            
+            sides.forEach(side => {
+                for (let i = 0; i < confettiCount; i++) {
+                    const confettiPiece = document.createElement('div');
+                    confettiPiece.className = `confetti-piece confetti-${side}`;
+                    
+                    if (side === 'top' || side === 'bottom') {
+                        confettiPiece.style.left = Math.random() * 100 + '%';
+                        confettiPiece.style.top = side === 'top' ? '-50px' : '100vh';
+                    } else {
+                        confettiPiece.style.top = Math.random() * 100 + '%';
+                        confettiPiece.style.left = side === 'left' ? '-50px' : '100vw';
+                    }
+                    
+                    confettiPiece.style.animationDelay = Math.random() * 2 + 's';
+                    confettiPiece.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    
+                    confettiContainer.appendChild(confettiPiece);
+                }
+            });
+            
+            setTimeout(() => {
+                confettiContainer.innerHTML = '';
+            }, 6000);
+        }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Handle orientation changes
+        window.addEventListener('orientationchange', function() {
+            setTimeout(() => {
+                // Recalculate any necessary dimensions
+                const modal = document.getElementById('modal');
+                if (modal.style.display === 'block') {
+                    // Reposition modal if needed
+                    modal.querySelector('.modal-content').style.maxHeight = '90vh';
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>
